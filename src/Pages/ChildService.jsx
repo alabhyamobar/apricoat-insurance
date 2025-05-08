@@ -7,7 +7,7 @@ const ChildServicesPage = () => {
   const { service } = useContext(ServicesProvider);
 
   const parentService = service.find(
-    (s) => s.title.toLowerCase().replace(/\s+/g, '-') === serviceSlug?.toLowerCase()
+    (s) => s.sulg === serviceSlug?.toLowerCase()
   );
 
   if (!parentService) {

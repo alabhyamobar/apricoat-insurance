@@ -46,7 +46,7 @@ const App = () => {
   }
 
   if (location.pathname.startsWith('/apricoat-insurance/services/')) {
-    return (
+    return ( 
       <div className="min-h-screen w-full bg-white text-black p-4 md:p-8">
         <Nav />
         <ChildServicesPage />

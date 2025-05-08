@@ -27,7 +27,7 @@ const ServiceDetail = () => {
             </div>
 
             <button
-              onClick={() => navigate(`/apricoat-insurance/services/${item.title.toLowerCase().replace(/\s/g, '-')}`)}
+              onClick={() => navigate(`/apricoat-insurance/services/${item.slug}`)}
               className="mt-6 self-start bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md text-sm sm:text-base font-medium transition-colors duration-200"
             >
               Learn More
