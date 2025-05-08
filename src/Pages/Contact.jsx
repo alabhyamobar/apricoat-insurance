@@ -32,9 +32,9 @@ const Contact = () => {
       <div className="w-full lg:w-1/2 h-72 sm:h-96 lg:h-auto">
         <iframe
           title="Kanpur Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.3270864288446!2d80.31201601504572!3d26.89304188314154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c388e659b3cfd%3A0x5c5bc23baf6d54f3!2sSarvodaya%20Nagar%2C%20Kanpur!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5993.548359713912!2d80.26401022505621!3d26.48496803283814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c379c7f7abc79%3A0x37e3966d61f9c48!2sCylinder%20Chauraha!5e0!3m2!1sen!2sin!4v1746529502872!5m2!1sen!2sin"
+          width="80%"
+          height="80%"
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
