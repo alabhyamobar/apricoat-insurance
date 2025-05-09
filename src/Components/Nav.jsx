@@ -12,12 +12,13 @@ const Nav = () => {
     testimonialRef,
     scrollToView,
   } = useContext(ScrollProvider);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [isSamsung, setIsSamsung] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
-
   const isHome = location.pathname === "/";
 
   useEffect(() => {
@@ -28,28 +29,53 @@ const Nav = () => {
     setIsSamsung(/Samsung|SM-/.test(navigator.userAgent));
   }, []);
 
+  useEffect(() => {
+    // Scroll when hash is updated (landing page)
+    if (location.hash) {
+      const hash = location.hash.replace("#", "");
+      const refMap = {
+        home: homeRef,
+        about: aboutRef,
+        services: serviceRef,
+        testimonials: testimonialRef,
+        contact: contactRef,
+      };
+      const targetRef = refMap[hash];
+      if (targetRef && targetRef.current) {
+        setTimeout(() => {
+          scrollToView(targetRef);
+        }, 100); // slight delay ensures DOM is ready
+      }
+    }
+
+    return () => {
+      if (isIOS) document.body.style.overflow = "auto";
+    };
+  }, [location.hash]);
+
   const navItems = [
     { label: "Home", ref: homeRef, hash: "home" },
     { label: "About", ref: aboutRef, hash: "about" },
     { label: "Services", ref: serviceRef, hash: "services" },
     { label: "Testimonials", ref: testimonialRef, hash: "testimonials" },
-    // { label: 'Contact', ref: contactRef, hash: 'contact' },
   ];
 
   const handleNav = (ref, hash) => {
     setIsOpen(false);
+    if (isIOS) document.body.style.overflow = "auto";
+
     if (isHome) {
       scrollToView(ref);
     } else {
       navigate(`/#${hash}`);
     }
-    if (isIOS) document.body.style.overflow = "auto";
   };
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    const willOpen = !isOpen;
+    setIsOpen(willOpen);
     if (isIOS) {
-      document.body.style.overflow = isOpen ? "auto" : "hidden";
+      document.body.style.overflow = willOpen ? "hidden" : "auto";
     }
   };
 
@@ -60,14 +86,15 @@ const Nav = () => {
       }`}
     >
       <div
-        className={`w-full px-4 sm:px-5 mx-auto max-w-screen-xl flex justify-between items-center 
-                      ${isSamsung ? "py-2.5" : "py-3"} md:py-4`}
+        className={`w-full px-4 sm:px-5 mx-auto max-w-screen-xl flex justify-between items-center ${
+          isSamsung ? "py-2.5" : "py-3"
+        } md:py-4`}
       >
         <div className="text-xl md:text-2xl font-bold text-blue-500">
           Apricoat Insurance
         </div>
 
-        {/* Desktop Nav */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-4 lg:gap-6">
           {navItems.map((item) => (
             <button
@@ -106,11 +133,11 @@ const Nav = () => {
 
       {/* Mobile Slide-in Menu */}
       <div
-        className={`fixed top-[64px] left-0 w-full h-[calc(100vh-64px)] bg-white z-40 transform transition-transform duration-300 ease-in-out
-                   ${
-                     isOpen ? "translate-x-0" : "-translate-x-full"
-                   } md:hidden px-5 py-3 flex flex-col items-start gap-1 overflow-y-auto
-                   ${isIOS ? "pb-[env(safe-area-inset-bottom)]" : ""}`}
+        className={`fixed top-[64px] left-0 w-full h-[calc(100vh-64px)] bg-white z-40 transform transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } md:hidden px-5 py-3 flex flex-col items-start gap-1 overflow-y-auto ${
+          isIOS ? "pb-[env(safe-area-inset-bottom)]" : ""
+        }`}
         style={{
           WebkitOverflowScrolling: isSamsung ? "touch" : "auto",
         }}
@@ -119,17 +146,24 @@ const Nav = () => {
           <button
             key={item.label}
             onClick={() => handleNav(item.ref, item.hash)}
-            className={`text-gray-800 hover:text-blue-500 text-lg font-medium w-full text-left py-3 px-3 rounded-md
-                      ${isIOS ? "active:bg-gray-100" : "active:bg-blue-50"}`}
+            className={`text-gray-800 hover:text-blue-500 text-lg font-medium w-full text-left py-3 px-3 rounded-md ${
+              isIOS ? "active:bg-gray-100" : "active:bg-blue-50"
+            }`}
           >
             {item.label}
           </button>
         ))}
 
         <Link to="/apricoat-insurance/contact">
-          <button 
-          className={`text-gray-800 hover:text-blue-500 text-lg font-medium w-full text-left py-3 px-3 rounded-md
-                      ${isIOS ? "active:bg-gray-100" : "active:bg-blue-50"}`}>
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              if (isIOS) document.body.style.overflow = "auto";
+            }}
+            className={`text-gray-800 hover:text-blue-500 text-lg font-medium w-full text-left py-3 px-3 rounded-md ${
+              isIOS ? "active:bg-gray-100" : "active:bg-blue-50"
+            }`}
+          >
             Contact Us
           </button>
         </Link>

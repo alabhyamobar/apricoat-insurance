@@ -15,17 +15,22 @@ const App = () => {
   const location = useLocation();
   const { homeRef, aboutRef, serviceRef, testimonialRef, contactRef } = useContext(ScrollProvider);
 
-  useEffect(() => {
-    const hash = location.hash?.replace('#', '');
-    if (hash) {
-      const element = document.getElementById(hash);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
-      }
+ useEffect(() => {
+  if (location.hash) {
+    const hash = location.hash.replace("#", "");
+    const refMap = {
+      home: homeRef,
+      about: aboutRef,
+      services: serviceRef,
+      testimonials: testimonialRef,
+    };
+    const targetRef = refMap[hash];
+    if (targetRef && targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [location]);
+  }
+}, [location.hash]);
+
 
   if (location.pathname === '/apricoat-insurance/team') {
     return (
