@@ -60,13 +60,13 @@ const About = ({ refProp }) => {
         {/* Text Section */}
         <div ref={textRef} className="flex-1 text-center lg:text-left">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-900 mb-6">
-            Trusted Insurance Partner Since 1995
+            Trusted Insurance Partner Since 2024
           </h2>
           <p className="text-gray-700 mb-4 text-lg">
-            For over 25 years, Apricoat Insurances has been delivering tailored insurance solutions...
+            At Apricoat Insurance, we are dedicated to providing our clients with the highest level of customer service and the best insurance products available.
           </p>
           <p className="text-gray-700 text-lg mb-6">
-            Our team of dedicated professionals works closely with each client to understand their unique risks...
+            Our team of experts is here to help you navigate the complex world of insurance and to find the coverage that meets your needs and budget. We offer a wide range of products, including motor, home, health, life and corporate insurance. Explore our website to learn more about our services and get in touch with us to get started.
           </p>
           <button className="bg-blue-800 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-900 transition">
             <Link to="apricoat-insurance/team">Learn More About Us</Link>
