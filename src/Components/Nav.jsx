@@ -30,7 +30,6 @@ const Nav = () => {
   }, []);
 
   useEffect(() => {
-    // Scroll when hash is updated (landing page)
     if (location.hash) {
       const hash = location.hash.replace("#", "");
       const refMap = {
@@ -44,7 +43,7 @@ const Nav = () => {
       if (targetRef && targetRef.current) {
         setTimeout(() => {
           scrollToView(targetRef);
-        }, 100); // slight delay ensures DOM is ready
+        }, 100);
       }
     }
 
@@ -112,9 +111,11 @@ const Nav = () => {
             </button>
           </Link>
 
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm lg:text-base font-semibold transition-colors duration-200">
-            Get Quotes
-          </button>
+          <Link to="/apricoat-insurance/quotes">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm lg:text-base font-semibold transition-colors duration-200">
+              Get Quotes
+            </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -168,9 +169,17 @@ const Nav = () => {
           </button>
         </Link>
 
-        <button className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-md font-semibold transition-colors duration-200">
-          Get Quotes
-        </button>
+        <Link to="/apricoat-insurance/quotes">
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              if (isIOS) document.body.style.overflow = "auto";
+            }}
+            className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-md font-semibold transition-colors duration-200"
+          >
+            Get Quotes
+          </button>
+        </Link>
       </div>
     </nav>
   );

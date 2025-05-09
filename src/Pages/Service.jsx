@@ -6,10 +6,22 @@ import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const insuranceLogos = [
+  "/logos/lic.png",
+  "/logos/hdfc.png",
+  "/logos/sbi.png",
+  "/logos/icici.png",
+  "/logos/bajaj.png",
+  "/logos/tata.png",
+  "/logos/reliance.png",
+  "/logos/max.png"
+];
+
 const Services = ({ refProp }) => {
   const { service } = useContext(ServicesProvider);
   const cardsRef = useRef([]);
   const sectionRef = useRef(null);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -29,6 +41,15 @@ const Services = ({ refProp }) => {
           },
         }
       );
+
+      // Sliding animation
+      const totalWidth = sliderRef.current.scrollWidth;
+      gsap.to(sliderRef.current, {
+        x: `-${totalWidth / 2}`,
+        duration: 10,
+        ease: "linear",
+        repeat: -1,
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -72,6 +93,26 @@ const Services = ({ refProp }) => {
       <button className="mt-10 bg-blue-800 hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-md">
         <Link to="apricoat-insurance/allserivces">View all Services</Link>
       </button>
+
+      {/* Partners Logo Slider */}
+      <div className="mt-20">
+        <h3 className="text-2xl font-bold text-blue-900 mb-6">Our Partners</h3>
+        <div className="overflow-hidden relative">
+          <div
+            ref={sliderRef}
+            className="flex gap-10 w-max items-center px-4"
+          >
+            {insuranceLogos.concat(insuranceLogos).map((logo, index) => (
+              <img
+                key={index}
+                src={logo}
+                alt="Insurance Partner Logo"
+                className="h-16 object-contain"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

@@ -11,6 +11,7 @@ import ServiceDetails from './Pages/ServiceDetails';
 import ChildServicesPage from './Pages/ChildService';
 import Footer from './Pages/Footer';
 import Contact from './Pages/Contact'
+import ContactForm from './Components/ContactForm';
 const App = () => {
   const location = useLocation();
   const { homeRef, aboutRef, serviceRef, testimonialRef, contactRef } = useContext(ScrollProvider);
@@ -59,6 +60,14 @@ const App = () => {
     );
   }
   
+  if(location.pathname === '/apricoat-insurance/quotes') {
+    return (
+      <div className="min-h-screen w-full bg-white text-black p-4 md:p-8">
+        <Nav />
+        <ContactForm />
+      </div>
+    )
+  }
 
   if (location.pathname === '/apricoat-insurance/contact') {
     return (
