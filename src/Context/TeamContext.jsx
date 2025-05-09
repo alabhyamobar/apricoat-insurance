@@ -14,8 +14,7 @@ const TeamContext = ({children}) => {
             id: 2,
             name: "Shaifali Saxena",
             role: "On Board Director",
-            description: "Shaifali Saxena serves as the On Board Director at Apricoat Insurance, where she plays a pivotal role in orchestrating and streamlining the onboarding experience for both clients and new employees. With an unwavering commitment to excellence and precision, she ensures that every interaction is tailored, timely, and transparent. Her strategic approach bridges operational efficiency with a human touch, making sure that every stakeholder—from first-time policyholders to newly hired team members—feels informed, welcomed, and empowered. Under her leadership, the onboarding process at Apricoat has evolved into a benchmark of trust, clarity, and confidence, setting the tone for long-term relationships and successful collaborations.
-            //image: "https://via.placeholder.com/150"
+            description: "Shaifali Saxena serves as the On Board Director at Apricoat Insurance, where she plays a pivotal role in orchestrating and streamlining the onboarding experience for both clients and new employees. With an unwavering commitment to excellence and precision, she ensures that every interaction is tailored, timely, and transparent. Her strategic approach bridges operational efficiency with a human touch, making sure that every stakeholder—from first-time policyholders to newly hired team members—feels informed, welcomed, and empowered. Under her leadership, the onboarding process at Apricoat has evolved into a benchmark of trust, clarity, and confidence, setting the tone for long-term relationships and successful collaborations."
           },
           {
             id: 3,
