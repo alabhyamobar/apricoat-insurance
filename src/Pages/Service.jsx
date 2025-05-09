@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 const insuranceLogos = [
-  "/logos/lic.png",
-  "/logos/hdfc.png",
-  "/logos/sbi.png",
-  "/logos/icici.png",
-  "/logos/bajaj.png",
-  "/logos/tata.png",
-  "/logos/reliance.png",
-  "/logos/max.png"
+  "https://seeklogo.com/images/L/lic-of-india-logo-FA4A9AD73C-seeklogo.com.png",
+  "https://companieslogo.com/img/orig/HDB_BIG-092606ce.png?t=1720244492",
+  "https://companieslogo.com/img/orig/SBILIFE.NS-a71de2cc.png?t=1729420182",
+  "https://companieslogo.com/img/orig/IBN_BIG-9ec25662.png?t=1720244492",
+  "https://tse1.mm.bing.net/th?id=OIP.x7muJhpWd9f3Ak2tdfN5gQHaD6&pid=Api&P=0&h=180",
+  "https://images.seeklogo.com/logo-png/13/2/tata-logo-png_seeklogo-135878.png?v=1955208205498858600",
+  "https://tse2.mm.bing.net/th?id=OIP.jCv025elxqYuXA-WSQMojwHaEq&pid=Api&P=0&h=180",
+  "https://tse4.mm.bing.net/th?id=OIP.49ykzwrn1WMg5AtWGl-kYQHaD8&pid=Api&P=0&h=180"
 ];
 
 const Services = ({ refProp }) => {
@@ -25,6 +25,7 @@ const Services = ({ refProp }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Card animation
       gsap.fromTo(
         cardsRef.current,
         { y: 50, opacity: 0 },
@@ -42,12 +43,12 @@ const Services = ({ refProp }) => {
         }
       );
 
-      // Sliding animation
-      const totalWidth = sliderRef.current.scrollWidth;
+      // Smooth infinite logo scroll
+      const totalWidth = sliderRef.current.scrollWidth / 3;
       gsap.to(sliderRef.current, {
-        x: `-${totalWidth / 2}`,
-        duration: 10,
-        ease: "linear",
+        x: `-${totalWidth}`,
+        duration: 20,
+        ease: "none",
         repeat: -1,
       });
     }, sectionRef);
@@ -96,20 +97,28 @@ const Services = ({ refProp }) => {
 
       {/* Partners Logo Slider */}
       <div className="mt-20">
-        <h3 className="text-2xl font-bold text-blue-900 mb-6">Our Partners</h3>
+        <h3 className="text-4xl font-bold text-blue-900 mb-10">Our Partners</h3>
+        <p className="text-gray-600 mb-12 max-w-3xl mx-auto text-xl">Meet our trusted partners</p>
         <div className="overflow-hidden relative">
           <div
             ref={sliderRef}
-            className="flex gap-10 w-max items-center px-4"
+            className="flex gap-16 w-max items-center px-4 will-change-transform"
           >
-            {insuranceLogos.concat(insuranceLogos).map((logo, index) => (
-              <img
-                key={index}
-                src={logo}
-                alt="Insurance Partner Logo"
-                className="h-16 object-contain"
-              />
-            ))}
+            {insuranceLogos
+              .concat(insuranceLogos)
+              .concat(insuranceLogos)
+              .map((logo, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-60 h-28 flex items-center justify-center"
+                >
+                  <img
+                    src={logo}
+                    alt="Insurance Partner Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </div>
