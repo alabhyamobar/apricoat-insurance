@@ -60,7 +60,6 @@ const ServiceContext = (props) => {
           desc: "Commercial insurance provides essential coverage for businesses, safeguarding them from a variety of risks like property damage, employee injuries, legal liabilities, or product-related incidents. This insurance is crucial for protecting business assets, operations, and employees, ensuring that companies can continue functioning smoothly even in the face of unexpected events. Depending on the type of business, it can include general liability insurance, workers’ compensation, product liability, business interruption coverage, and more. For any business, commercial insurance is a critical tool for risk management and long-term sustainability.",
           logo: "🏢",
         },
-        // Marine Insurance removed
       ],
     },
     {
