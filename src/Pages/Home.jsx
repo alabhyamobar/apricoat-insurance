@@ -19,7 +19,7 @@ const Home = ({ refProp }) => {
           />
         </h1>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white pb-4 sm:pb-5">
-          Protect what matters
+          An Insurance for every possibility.
         </h2>
         <p className="text-base sm:text-lg md:text-xl font-semibold text-white pb-6 max-w-xl">
           Specialized insurance solutions for marine, fire, and more. Get peace
